@@ -546,6 +546,7 @@ namespace Azure.DataApiBuilder.Service.GraphQLBuilder.Sql
                 "String" => STRING_TYPE,
                 "Guid" => UUID_TYPE,
                 "Byte" => BYTE_TYPE,
+                "SByte" => SHORT_TYPE,
                 "Int16" => SHORT_TYPE,
                 "Int32" => INT_TYPE,
                 "Int64" => LONG_TYPE,
@@ -579,6 +580,7 @@ namespace Azure.DataApiBuilder.Service.GraphQLBuilder.Sql
             IValueNode arg = metadataValue switch
             {
                 byte value => new ObjectValueNode(new ObjectFieldNode(BYTE_TYPE, new IntValueNode(value))),
+                sbyte value => new ObjectValueNode(new ObjectFieldNode(SHORT_TYPE, new IntValueNode(value))),
                 short value => new ObjectValueNode(new ObjectFieldNode(SHORT_TYPE, new IntValueNode(value))),
                 int value => new ObjectValueNode(new ObjectFieldNode(INT_TYPE, value)),
                 long value => new ObjectValueNode(new ObjectFieldNode(LONG_TYPE, new IntValueNode(value))),

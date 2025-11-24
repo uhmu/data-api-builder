@@ -219,6 +219,7 @@ namespace Azure.DataApiBuilder.Service.Tests.GraphQLBuilder.Sql
         [DataTestMethod]
         [DataRow(typeof(string), STRING_TYPE)]
         [DataRow(typeof(byte), BYTE_TYPE)]
+        [DataRow(typeof(sbyte), SHORT_TYPE)]
         [DataRow(typeof(short), SHORT_TYPE)]
         [DataRow(typeof(int), INT_TYPE)]
         [DataRow(typeof(long), LONG_TYPE)]

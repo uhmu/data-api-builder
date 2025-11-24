@@ -141,6 +141,7 @@ namespace Azure.DataApiBuilder.Core.Services
                 "String" => EdmPrimitiveTypeKind.String,
                 "Guid" => EdmPrimitiveTypeKind.Guid,
                 "Byte" => EdmPrimitiveTypeKind.Byte,
+                "SByte" => EdmPrimitiveTypeKind.SByte,
                 "Int16" => EdmPrimitiveTypeKind.Int16,
                 "Int32" => EdmPrimitiveTypeKind.Int32,
                 "Int64" => EdmPrimitiveTypeKind.Int64,

@@ -123,6 +123,8 @@ namespace Azure.DataApiBuilder.Core.Parsers
                         return Guid.Parse(param);
                     case EdmPrimitiveTypeKind.Byte:
                         return byte.Parse(param);
+                    case EdmPrimitiveTypeKind.SByte:
+                        return sbyte.Parse(param);
                     case EdmPrimitiveTypeKind.Int16:
                         return short.Parse(param);
                     case EdmPrimitiveTypeKind.Int32:
