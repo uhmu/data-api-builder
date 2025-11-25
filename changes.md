@@ -36,3 +36,16 @@ This document summarizes the functional additions applied on top of the fresh
 after pulling these changes so the CLI/runtime bits under `src/out/` pick up the
 new type support.
 
+## 3. UInt16 / UInt8 / UInt64 Support
+
+- Extended `TypeHelper` and parameter parsing to recognize `UInt16`, `UInt64`,
+  and even providers that surface `UInt8`/`Uint8`, preventing unsigned values
+  from being flagged as unsupported during metadata discovery or query binding.
+- GraphQL schema creation now maps the new unsigned CLR types to their closest
+  supported scalars (`Int`, `Byte`, or `Decimal`) and can serialize default
+  values without overflow (e.g., `ulong` via decimal-backed nodes).
+- Tests were augmented:
+  - `SchemaConverterTests` covers the new type mappings and directives.
+  - `CLRtoJsonValueTypeUnitTests` verifies all unsigned CLR types resolve to the
+    expected JSON/DbType pairings.
+

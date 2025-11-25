@@ -110,9 +110,15 @@ public class CLRtoJsonValueTypeUnitTests
     }
 
     [TestMethod]
-    public void UnsignedIntResolvesToJsonNumber()
+    public void UnsignedTypesResolveToJsonNumber()
     {
+        Assert.AreEqual(JsonDataType.Number, TypeHelper.GetJsonDataTypeFromSystemType(typeof(ushort)));
+        Assert.AreEqual(DbType.UInt16, TypeHelper.GetDbTypeFromSystemType(typeof(ushort)));
+
         Assert.AreEqual(JsonDataType.Number, TypeHelper.GetJsonDataTypeFromSystemType(typeof(uint)));
         Assert.AreEqual(DbType.UInt32, TypeHelper.GetDbTypeFromSystemType(typeof(uint)));
+
+        Assert.AreEqual(JsonDataType.Number, TypeHelper.GetJsonDataTypeFromSystemType(typeof(ulong)));
+        Assert.AreEqual(DbType.UInt64, TypeHelper.GetDbTypeFromSystemType(typeof(ulong)));
     }
 }

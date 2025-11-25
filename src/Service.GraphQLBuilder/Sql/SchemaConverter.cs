@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System;
 using System.Collections.Immutable;
 using System.Net;
 using Azure.DataApiBuilder.Config.DatabasePrimitives;
@@ -546,10 +547,14 @@ namespace Azure.DataApiBuilder.Service.GraphQLBuilder.Sql
                 "String" => STRING_TYPE,
                 "Guid" => UUID_TYPE,
                 "Byte" => BYTE_TYPE,
+                "UInt8" => BYTE_TYPE,
+                "Uint8" => BYTE_TYPE,
                 "SByte" => SHORT_TYPE,
+                "UInt16" => INT_TYPE,
                 "Int16" => SHORT_TYPE,
                 "Int32" => INT_TYPE,
                 "UInt32" => LONG_TYPE,
+                "UInt64" => DECIMAL_TYPE,
                 "Int64" => LONG_TYPE,
                 "Single" => SINGLE_TYPE,
                 "Double" => FLOAT_TYPE,
@@ -583,8 +588,10 @@ namespace Azure.DataApiBuilder.Service.GraphQLBuilder.Sql
                 byte value => new ObjectValueNode(new ObjectFieldNode(BYTE_TYPE, new IntValueNode(value))),
                 sbyte value => new ObjectValueNode(new ObjectFieldNode(SHORT_TYPE, new IntValueNode(value))),
                 short value => new ObjectValueNode(new ObjectFieldNode(SHORT_TYPE, new IntValueNode(value))),
+                ushort value => new ObjectValueNode(new ObjectFieldNode(INT_TYPE, new IntValueNode(value))),
                 int value => new ObjectValueNode(new ObjectFieldNode(INT_TYPE, value)),
                 uint value => new ObjectValueNode(new ObjectFieldNode(LONG_TYPE, new IntValueNode((long)value))),
+                ulong value => new ObjectValueNode(new ObjectFieldNode(DECIMAL_TYPE, new FloatValueNode(Convert.ToDecimal(value)))),
                 long value => new ObjectValueNode(new ObjectFieldNode(LONG_TYPE, new IntValueNode(value))),
                 Guid value => new ObjectValueNode(new ObjectFieldNode(UUID_TYPE, new UuidType().ParseValue(value))),
                 string value => new ObjectValueNode(new ObjectFieldNode(STRING_TYPE, value)),
