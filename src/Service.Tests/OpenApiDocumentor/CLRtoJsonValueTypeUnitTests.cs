@@ -3,6 +3,7 @@
 #nullable enable
 using System;
 using System.Collections.Generic;
+using System.Data;
 using Azure.DataApiBuilder.Core.Services;
 using Azure.DataApiBuilder.Core.Services.OpenAPI;
 using Azure.DataApiBuilder.Service.Exceptions;
@@ -106,5 +107,12 @@ public class CLRtoJsonValueTypeUnitTests
     {
         Assert.AreNotEqual(notExpected: JsonDataType.Undefined, actual: TypeHelper.GetJsonDataTypeFromSystemType(nullableType));
         Assert.IsNotNull(TypeHelper.GetDbTypeFromSystemType(nullableType));
+    }
+
+    [TestMethod]
+    public void UnsignedIntResolvesToJsonNumber()
+    {
+        Assert.AreEqual(JsonDataType.Number, TypeHelper.GetJsonDataTypeFromSystemType(typeof(uint)));
+        Assert.AreEqual(DbType.UInt32, TypeHelper.GetDbTypeFromSystemType(typeof(uint)));
     }
 }

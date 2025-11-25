@@ -433,6 +433,7 @@ namespace Azure.DataApiBuilder.Core.Resolvers
                 "Byte" => byte.Parse(param),
                 "SByte" => sbyte.Parse(param),
                 "Byte[]" => Convert.FromBase64String(param),
+                "UInt32" => uint.Parse(param),
                 "Int16" => short.Parse(param),
                 "Int32" => int.Parse(param),
                 "Int64" => long.Parse(param),
